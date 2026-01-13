@@ -7,10 +7,10 @@ const colorDarkAccent = '#5c3939';
 
 // Product Image URLs (Mock Data - added fallback array for slider)
 const shopHeroImageUrl = "https://i.postimg.cc/Bbqgm0Yx/image.png";
-const productImageUrl1 = "https://i.postimg.cc/xjty9Bpm/image.png";
-const productImageUrl2 = "https://i.postimg.cc/xjty9Bpm/image.png"; 
-const productImageUrl3 = "https://i.postimg.cc/xjty9Bpm/image.png";
-const productImageUrl4 = "https://i.postimg.cc/xjty9Bpm/image.png";
+const productImageUrl1 = "https://i.postimg.cc/wvQZ2g5Q/1461c67c-e363-4521-ae1b-9d2051706bcd.png";
+const productImageUrl2 = "https://i.postimg.cc/wvQZ2g5Q/1461c67c-e363-4521-ae1b-9d2051706bcd.png"; 
+const productImageUrl3 = "https://i.postimg.cc/wvQZ2g5Q/1461c67c-e363-4521-ae1b-9d2051706bcd.png";
+const productImageUrl4 = "https://i.postimg.cc/wvQZ2g5Q/1461c67c-e363-4521-ae1b-9d2051706bcd.png";
 
 
 const HeartIcon = ({ filled = false, onClick }) => (
