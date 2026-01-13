@@ -2,19 +2,16 @@ import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 
 import heroImage from '../assets/image.png';
-import mapImage from '../assets/demi.png';
+import mapImage from '../assets/anotherdemi.png';
 
 
-const colorSecondary = '#f5e6d6'; // The main beige background
-const colorPrimary = '#3d2626';   // Dark text/Dark Brown background for footer
-const colorFormBg = '#fcf8f3';    // Slightly lighter beige for the form box
-const colorButtonBg = colorPrimary; // Dark brown for the button
-
-// --- Shared Components for Context ---
+const colorSecondary = '#f5e6d6'; 
+const colorPrimary = '#3d2626';   
+const colorFormBg = '#fcf8f3';   
+const colorButtonBg = colorPrimary; 
 
 // Navbar Component
 const Navbar = () => {
-    // 1. State to manage the open/close status of the menu
     const [isOpen, setIsOpen] = useState(false);
 
     const navItems = [
@@ -34,13 +31,12 @@ const Navbar = () => {
                     to="/" 
                     className="text-3xl font-serif font-bold tracking-wider relative z-50" 
                     style={{ color: colorPrimary }}
-                    onClick={() => setIsOpen(false)} // Close menu if logo is clicked
+                    onClick={() => setIsOpen(false)} 
                 >
                     demi
                     <span className="inline-block align-top ml-1 text-sm leading-none" style={{ color: colorPrimary }}>&reg;</span>
                 </Link>
                 
-                {/* Desktop Navigation (Hidden on Mobile) */}
                 <nav className="hidden md:flex space-x-8">
                     {navItems.map(item => (
                         <Link 
@@ -54,14 +50,12 @@ const Navbar = () => {
                     ))}
                 </nav>
 
-                {/* Mobile Hamburger Button (Visible only on Mobile) */}
                 <button 
                     onClick={() => setIsOpen(!isOpen)}
                     className="md:hidden p-2 focus:outline-none relative z-50"
                     style={{ color: colorPrimary }}
                     aria-label="Toggle menu"
                 >
-                    {/* Switch between Hamburger and Close Icon */}
                     {isOpen ? (
                         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -74,7 +68,6 @@ const Navbar = () => {
                 </button>
             </div>
 
-            {/* Mobile Menu Dropdown/Overlay */}
             <div 
                 className={`fixed inset-0 z-40 flex flex-col items-center justify-center space-y-8 transition-transform duration-300 ease-in-out md:hidden ${
                     isOpen ? 'translate-x-0' : 'translate-x-full'
@@ -85,7 +78,7 @@ const Navbar = () => {
                     <Link 
                         key={item.name} 
                         to={item.path}
-                        onClick={() => setIsOpen(false)} // Close menu when a link is clicked
+                        onClick={() => setIsOpen(false)} 
                         className="text-2xl uppercase tracking-widest font-medium hover:opacity-70 transition duration-200"
                         style={{ color: colorPrimary, fontFamily: 'sans-serif' }}
                     >
@@ -104,7 +97,7 @@ const Footer = () => (
           
           <div className="flex flex-col md:flex-row justify-between relative mb-12">
             
-            {/* Left Column: Script Text */}
+            {/* Left Column*/}
             <div className="md:w-5/12 flex items-center mb-10 md:mb-0">
               <p 
                 className="text-4xl md:text-5xl leading-tight italic" 
@@ -115,10 +108,7 @@ const Footer = () => (
               </p>
             </div>
 
-            {/* Vertical Divider (Hidden on Mobile) */}
             <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-white opacity-40 transform -translate-x-1/2"></div>
-
-            {/* Right Column: Contact Details (Kept the original Tokyo details as per image_060a7c.png) */}
             <div className="md:w-5/12 flex flex-col justify-center text-sm font-sans tracking-wide space-y-4 md:pl-10">
               
               {/* Address */}
@@ -167,17 +157,11 @@ const Footer = () => (
       </footer>
 );
 
-
-// --- Contact Component (Main Page) ---
 const Contact = () => {
-  
-  // Base style for the card containers (rounded corners, soft shadow)
   const contactCardStyle = {
     borderRadius: '40px',
     boxShadow: '0 10px 30px rgba(61, 38, 38, 0.05)',
   };
-
-  // Input Field component for clean repetition
   const FormInput = ({ id, label, type = 'text' }) => (
     <div className="space-y-1">
       <label htmlFor={id} className="sr-only">{label}</label>
@@ -195,8 +179,6 @@ const Contact = () => {
   return (
     <div style={{ backgroundColor: colorSecondary, minHeight: '100vh' }}>
       <Navbar />
-
-      {/* Hero Section (Replicated from image_05a4e2.png) */}
       <section
         className="w-full h-96 flex items-end relative"
         style={{
@@ -226,8 +208,6 @@ const Contact = () => {
         </h2>
 
         <div className="max-w-7xl mx-auto px-6 md:px-10 grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-          
-          {/* LEFT: Send us a message (Form) */}
           <div 
             className="p-10 flex flex-col" 
             style={{ ...contactCardStyle, backgroundColor: colorFormBg }}
@@ -265,8 +245,6 @@ const Contact = () => {
               </button>
             </form>
           </div>
-
-          {/* RIGHT: Or reach out directly (Map/Info) */}
           <div 
             className="flex flex-col overflow-hidden" 
             style={{ ...contactCardStyle, backgroundColor: colorPrimary, color: colorSecondary, border: `4px solid ${colorPrimary}` }}
@@ -280,7 +258,6 @@ const Contact = () => {
             
             <div className="p-10 pt-2 text-lg font-sans space-y-4">
                 <div className="w-full h-auto overflow-hidden rounded-md border border-gray-600 shadow-md">
-                    {/* UPDATED: Map image is now wrapped in a clickable link to Shalimar Bagh, Delhi */}
                     <a 
                         href="https://maps.google.com/?cid=13972034668935365191&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ" 
                         target="_blank" 
@@ -288,7 +265,7 @@ const Contact = () => {
                         aria-label="View Shalimar Bagh, Delhi on Google Maps"
                     >
                         <img 
-                            src={mapImage} // Static image placeholder
+                            src={mapImage} 
                             alt="Click to view Shalimar Bagh, Delhi on Google Maps"
                             className="w-full object-cover hover:opacity-90 transition-opacity"
                         />
