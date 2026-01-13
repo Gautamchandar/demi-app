@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 
 import heroImage from '../assets/image.png';
-import modelImage from '../assets/image2.png';
+import modelImage from '../assets/another.png';
 
 // --- Color Variables ---
 const colorSecondary = '#f5e6d6'; 
@@ -81,7 +81,7 @@ const Navbar = () => {
                     <Link 
                         key={item.name} 
                         to={item.path}
-                        onClick={() => setIsOpen(false)} // Close menu when a link is clicked
+                        onClick={() => setIsOpen(false)} 
                         className="text-2xl uppercase tracking-widest font-medium hover:opacity-70 transition duration-200"
                         style={{ color: colorPrimary, fontFamily: 'sans-serif' }}
                     >
@@ -136,7 +136,7 @@ const About = () => {
         </h2>
       </section>
 
-      {/* --- MAIN GRID SECTION --- */}
+      {/*MAIN GRID SECTION*/}
 
       <section className="max-w-7xl mx-auto px-6 md:px-10 pb-20 grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
 
@@ -185,7 +185,7 @@ const About = () => {
           
           <div className="flex flex-col md:flex-row justify-between relative mb-12">
             
-            {/* Left Column: Script Text */}
+            {/* Left Column*/}
             <div className="md:w-5/12 flex items-center mb-10 md:mb-0">
               <p 
                 className="text-4xl md:text-5xl leading-tight italic" 
@@ -196,10 +196,10 @@ const About = () => {
               </p>
             </div>
 
-            {/* Vertical Divider (Hidden on Mobile) */}
+            {/* Vertical Divider*/}
             <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-white opacity-40 transform -translate-x-1/2"></div>
 
-            {/* Right Column: Contact Details */}
+            {/* Right Column*/}
             <div className="md:w-5/12 flex flex-col justify-center text-sm font-sans tracking-wide space-y-4 md:pl-10">
               
               {/* Address */}
