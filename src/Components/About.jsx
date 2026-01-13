@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 
@@ -6,102 +6,103 @@ import heroImage from '../assets/image.png';
 import modelImage from '../assets/another.png';
 
 // --- Color Variables ---
-const colorSecondary = '#f5e6d6'; 
-const colorPrimary = '#3d2626';   
-const colorCardBg = '#fffaf5';    
+const colorSecondary = '#f5e6d6';
+const colorPrimary = '#3d2626';
+const colorCardBg = '#fffaf5';
 
 const Navbar = () => {
 
-    const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-    const navItems = [
-        { name: 'Home', path: '/' },
-        { name: 'About', path: '/about' },
-        { name: 'Shop', path: '/shop' },
-        { name: 'Contact Us', path: '/contact' },
-        { name: 'Login', path: '/login' },
-    ];
-    
-    return (
-        <header className="sticky top-0 z-50 w-full" style={{ backgroundColor: colorSecondary }}>
-            <div className="max-w-7xl mx-auto flex justify-between items-center py-4 px-6 md:px-10 relative z-50 bg-inherit">
-                
-                {/* Logo */}
-                <Link 
-                    to="/" 
-                    className="text-3xl font-serif font-bold tracking-wider relative z-50" 
-                    style={{ color: colorPrimary }}
-                    onClick={() => setIsOpen(false)} 
-                >
-                    demi
-                    <span className="inline-block align-top ml-1 text-sm leading-none" style={{ color: colorPrimary }}>&reg;</span>
-                </Link>
-                
-                <nav className="hidden md:flex space-x-8">
-                    {navItems.map(item => (
-                        <Link 
-                            key={item.name} 
-                            to={item.path} 
-                            className="text-lg uppercase tracking-widest hover:opacity-70 transition duration-200"
-                            style={{ color: colorPrimary, fontFamily: 'sans-serif' }}
-                        >
-                            {item.name}
-                        </Link>
-                    ))}
-                </nav>
+  const navItems = [
+    { name: 'Home', path: '/' },
+    { name: 'About', path: '/about' },
+    { name: 'Shop', path: '/shop' },
+    { name: 'Contact Us', path: '/contact' },
+    { name: 'Login', path: '/login' },
+  ];
 
-                {/* Mobile Hamburger Button (Visible only on Mobile) */}
-                <button 
-                    onClick={() => setIsOpen(!isOpen)}
-                    className="md:hidden p-2 focus:outline-none relative z-50"
-                    style={{ color: colorPrimary }}
-                    aria-label="Toggle menu"
-                >
-                    {/* Switch between Hamburger and Close Icon */}
-                    {isOpen ? (
-                        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                    ) : (
-                        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                    )}
-                </button>
-            </div>
+  return (
+    <header className="sticky top-0 z-50 w-full" style={{ backgroundColor: colorSecondary }}>
+      <div className="max-w-7xl mx-auto flex justify-between items-center py-4 px-6 md:px-10 relative z-50 bg-inherit">
 
-            {/* Mobile Menu Dropdown/Overlay */}
-            <div 
-                className={`fixed inset-0 z-40 flex flex-col items-center justify-center space-y-8 transition-transform duration-300 ease-in-out md:hidden ${
-                    isOpen ? 'translate-x-0' : 'translate-x-full'
-                }`}
-                style={{ backgroundColor: colorSecondary }}
+        {/* Logo */}
+        <Link
+          to="/"
+          className="relative z-50 flex items-center"
+          onClick={() => setIsOpen(false)}
+        >
+          <img
+            src="../src/assets/demi-logo.png"
+            alt="Demi Logo"
+            className="h-10 w-auto"
+          />
+        </Link>
+
+        <nav className="hidden md:flex space-x-8">
+          {navItems.map(item => (
+            <Link
+              key={item.name}
+              to={item.path}
+              className="text-lg uppercase tracking-widest hover:opacity-70 transition duration-200"
+              style={{ color: colorPrimary, fontFamily: 'sans-serif' }}
             >
-                {navItems.map(item => (
-                    <Link 
-                        key={item.name} 
-                        to={item.path}
-                        onClick={() => setIsOpen(false)} 
-                        className="text-2xl uppercase tracking-widest font-medium hover:opacity-70 transition duration-200"
-                        style={{ color: colorPrimary, fontFamily: 'sans-serif' }}
-                    >
-                        {item.name}
-                    </Link>
-                ))}
-            </div>
-        </header>
-    );
+              {item.name}
+            </Link>
+          ))}
+        </nav>
+
+        {/* Mobile Hamburger Button (Visible only on Mobile) */}
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="md:hidden p-2 focus:outline-none relative z-50"
+          style={{ color: colorPrimary }}
+          aria-label="Toggle menu"
+        >
+          {/* Switch between Hamburger and Close Icon */}
+          {isOpen ? (
+            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          ) : (
+            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          )}
+        </button>
+      </div>
+
+      {/* Mobile Menu Dropdown/Overlay */}
+      <div
+        className={`fixed inset-0 z-40 flex flex-col items-center justify-center space-y-8 transition-transform duration-300 ease-in-out md:hidden ${isOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
+        style={{ backgroundColor: colorSecondary }}
+      >
+        {navItems.map(item => (
+          <Link
+            key={item.name}
+            to={item.path}
+            onClick={() => setIsOpen(false)}
+            className="text-2xl uppercase tracking-widest font-medium hover:opacity-70 transition duration-200"
+            style={{ color: colorPrimary, fontFamily: 'sans-serif' }}
+          >
+            {item.name}
+          </Link>
+        ))}
+      </div>
+    </header>
+  );
 };
 
 const About = () => {
   const cardStyle = {
     backgroundColor: colorCardBg,
-    borderRadius: '40px', 
-    boxShadow: '0 10px 30px rgba(61, 38, 38, 0.05)', 
+    borderRadius: '40px',
+    boxShadow: '0 10px 30px rgba(61, 38, 38, 0.05)',
   };
 
   const beigeCardTextClass = "font-sans text-base leading-relaxed tracking-wide mt-4";
-  const titleClass = "text-4xl font-serif font-normal"; 
+  const titleClass = "text-4xl font-serif font-normal";
 
   return (
     <div style={{ backgroundColor: colorSecondary, minHeight: '100vh' }}>
@@ -148,8 +149,8 @@ const About = () => {
           </p>
         </div>
 
-        <div 
-          className="p-10 flex flex-col md:row-span-2" 
+        <div
+          className="p-10 flex flex-col md:row-span-2"
           style={cardStyle}
         >
           {/* Image Container */}
@@ -160,11 +161,11 @@ const About = () => {
               className="w-full h-auto object-cover transform hover:scale-105 transition duration-500"
             />
           </div>
-          
+
           <h3 className={`${titleClass} text-center md:text-left`} style={{ color: colorPrimary }}>Your Hair</h3>
-          
+
           <p className={beigeCardTextClass} style={{ color: colorPrimary }}>
-            At Demi, we believe your hair is a powerful form of self-expression, a statement of confidence and beauty that is uniquely yours. Your Hair deserves a regimen that respects its natural texture and provides deep, lasting nourishment. 
+            At Demi, we believe your hair is a powerful form of self-expression, a statement of confidence and beauty that is uniquely yours. Your Hair deserves a regimen that respects its natural texture and provides deep, lasting nourishment.
             <br /><br />
             Our formulas are designed not just to mask imperfections, but to build internal strength, enhance shine, and deliver that undeniable, silky-smooth finish. With every use, Demi empowers you to fall in love with your reflection, transforming daily care into a luxurious ritual that celebrates the vitality and radiance of Your Hair.
           </p>
@@ -182,16 +183,16 @@ const About = () => {
 
       <footer className="w-full pt-20 pb-10" style={{ backgroundColor: colorPrimary, color: colorSecondary }}>
         <div className="max-w-7xl mx-auto px-6 md:px-10">
-          
+
           <div className="flex flex-col md:flex-row justify-between relative mb-12">
-            
+
             {/* Left Column*/}
             <div className="md:w-5/12 flex items-center mb-10 md:mb-0">
-              <p 
-                className="text-4xl md:text-5xl leading-tight italic" 
+              <p
+                className="text-4xl md:text-5xl leading-tight italic"
                 style={{ fontFamily: '"Brush Script MT", cursive, serif' }}
               >
-                Made with love, <br /> 
+                Made with love, <br />
                 inspired hair nature.
               </p>
             </div>
@@ -201,12 +202,12 @@ const About = () => {
 
             {/* Right Column*/}
             <div className="md:w-5/12 flex flex-col justify-center text-sm font-sans tracking-wide space-y-4 md:pl-10">
-              
+
               {/* Address */}
               <div className="flex items-start gap-3">
                 <span className="text-red-400 text-lg">📍</span> {/* Pin Emoji */}
                 <p>
-                  45 Blossom Avenue, Kyoto Street, <br/>
+                  45 Blossom Avenue, Kyoto Street, <br />
                   Tokyo, Japan
                 </p>
               </div>
@@ -228,11 +229,11 @@ const About = () => {
                 <p className="mb-1 opacity-80">Follow us:</p>
                 <div className="flex items-center flex-wrap gap-x-2">
                   <span className="text-pink-400 text-lg">🌸</span> {/* Flower Emoji */}
-                  <a href="#" className="hover:text-white transition-colors underline decoration-1 underline-offset-2">Instagram</a> 
+                  <a href="#" className="hover:text-white transition-colors underline decoration-1 underline-offset-2">Instagram</a>
                   <span>|</span>
-                  <a href="#" className="hover:text-white transition-colors underline decoration-1 underline-offset-2">Pinterest</a> 
+                  <a href="#" className="hover:text-white transition-colors underline decoration-1 underline-offset-2">Pinterest</a>
                   <span>|</span>
-                  <a href="#" className="hover:text-white transition-colors underline decoration-1 underline-offset-2">Facebook</a> 
+                  <a href="#" className="hover:text-white transition-colors underline decoration-1 underline-offset-2">Facebook</a>
                   <span>|</span>
                   <a href="#" className="hover:text-white transition-colors underline decoration-1 underline-offset-2">YouTube</a>
                 </div>
@@ -243,10 +244,10 @@ const About = () => {
 
           {/* Horizontal Bottom Line */}
           <div className="w-full h-px bg-white opacity-40"></div>
-          
+
         </div>
       </footer>
-      
+
     </div>
   );
 };

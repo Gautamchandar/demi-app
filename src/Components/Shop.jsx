@@ -1,4 +1,5 @@
 import React, { useState, useMemo, useRef } from 'react';
+import { Link } from "react-router";
 
 // Define the custom colors
 const colorPrimary = '#3d2626'; 
@@ -84,14 +85,17 @@ const Navbar = ({ cartCount, onViewChange }) => {
         <header className="sticky top-0 z-10 w-full shadow-md" style={{ backgroundColor: colorSecondary }}>
             <div className="max-w-7xl mx-auto flex justify-between items-center py-4 px-6 md:px-10">
 
-                <div
-                    className="text-3xl font-serif font-bold tracking-wider cursor-pointer"
-                    style={{ color: colorPrimary }}
-                    onClick={() => onViewChange('shop', null)}
+                 <Link
+                    to="/"
+                    className="relative z-50 flex items-center"
+                    onClick={() => setIsOpen(false)}
                 >
-                    demi
-                    <span className="inline-block align-top ml-1 text-sm leading-none" style={{ color: colorPrimary }}>&reg;</span>
-                </div>
+                    <img
+                        src="../src/assets/demi-logo.png"  
+                        alt="Demi Logo"
+                        className="h-10 w-auto"
+                    />
+                </Link>
 
                 <nav className="flex items-center space-x-8">
                     {navItems.map(item => (

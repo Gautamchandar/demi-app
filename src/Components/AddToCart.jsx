@@ -1,26 +1,23 @@
 import React, { useMemo } from 'react';
-
-// Define the custom colors (Duplicated here for independent styling)
-const colorPrimary = '#3d2626'; // Deep Brown/Maroon
-const colorSecondary = '#f5e6d6'; // Light Creamy Beige
-const colorDarkAccent = '#5c3939'; // A slightly lighter brown for borders/accents
+const colorPrimary = '#3d2626';
+const colorSecondary = '#f5e6d6';
+const colorDarkAccent = '#5c3939';
 
 
 /**
- * @param {object[]} items - Array of { product, quantity }
- * @param {function} onUpdateQuantity - Function to update an item's quantity
- * @param {function} onRemoveItem - Function to remove an item
- * @param {function} onBack - Function to switch the view back to the shop
+ * @param {object[]} items 
+ * @param {function} onUpdateQuantity 
+ * @param {function} onRemoveItem 
+ * @param {function} onBack 
  */
 const AddToCart = ({ items, onUpdateQuantity, onRemoveItem, onBack }) => {
 
-    // Calculate totals
     const subtotal = useMemo(() =>
         items.reduce((sum, item) => sum + item.product.priceINR * item.quantity, 0),
         [items]
     );
 
-    const shipping = items.length > 0 ? 99 : 0; // Simple shipping fee
+    const shipping = items.length > 0 ? 99 : 0;
     const total = subtotal + shipping;
 
     return (
@@ -38,7 +35,6 @@ const AddToCart = ({ items, onUpdateQuantity, onRemoveItem, onBack }) => {
             </h1>
 
             <div className="flex flex-col md:flex-row gap-8">
-                {/* Cart Items List - Left Column */}
                 <div className="w-full md:w-2/3">
                     {items.length === 0 ? (
                         <div className="p-8 text-center rounded-xl shadow-lg" style={{ backgroundColor: '#fff', border: `1px solid ${colorDarkAccent}` }}>
@@ -70,7 +66,6 @@ const AddToCart = ({ items, onUpdateQuantity, onRemoveItem, onBack }) => {
                                         <p className="text-sm text-gray-600">₹ {(product.priceINR * quantity).toLocaleString('en-IN')}</p>
                                     </div>
 
-                                    {/* Quantity Controls */}
                                     <div className="flex items-center space-x-2 mr-4">
                                         <button
                                             onClick={() => onUpdateQuantity(product.id, quantity - 1)}
@@ -87,7 +82,6 @@ const AddToCart = ({ items, onUpdateQuantity, onRemoveItem, onBack }) => {
                                         </button>
                                     </div>
 
-                                    {/* Remove Button */}
                                     <button
                                         onClick={() => onRemoveItem(product.id)}
                                         className="text-red-500 hover:text-red-700 transition"
@@ -100,7 +94,6 @@ const AddToCart = ({ items, onUpdateQuantity, onRemoveItem, onBack }) => {
                     )}
                 </div>
 
-                {/* Summary - Right Column */}
                 <div
                     className="w-full md:w-1/3 p-6 rounded-xl shadow-xl"
                     style={{ backgroundColor: colorPrimary, color: colorSecondary }}
