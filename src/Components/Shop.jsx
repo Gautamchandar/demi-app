@@ -91,7 +91,7 @@ const Navbar = ({ cartCount, onViewChange }) => {
                     onClick={() => setIsOpen(false)}
                 >
                     <img
-                        src="../src/assets/demi-logo.png"  
+                        src="https://i.postimg.cc/L64d5Yks/demi-logo-png.png"  
                         alt="Demi Logo"
                         className="h-10 w-auto"
                     />
